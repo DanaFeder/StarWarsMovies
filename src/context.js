@@ -39,13 +39,24 @@ class FilmProvider extends Component {
 
     }
 
+    cleanFav = () => {
+        let favList = []
+        let size = this.state.allFilms.count
+        for (let i = 0; i < size; i++) {
+            favList.push(false);
+        }
+        Cookies.set("favList", JSON.stringify(favList))
+        this.setState(() => { return { favoritesFilms: favList } })
+    }
+
     render() {
         return (
             <FilmContext.Provider value={{
                 ...this.state,
                 updateFilms: this.updateFilms,
                 initFavoriteFilms: this.initFavoriteFilms,
-                toggleFavorite: this.toggleFavorite
+                toggleFavorite: this.toggleFavorite,
+                cleanFav: this.cleanFav,
             }}>
                 {this.props.children}
             </FilmContext.Provider>

@@ -11,36 +11,34 @@ export default class Film extends Component {
         const srcImg = `../../../img/${episode_id}.jpg`
 
         return (
-            <div className="movie_card" style={{ background: `url(${srcImg})` }}>
-                <FilmConsumer>
-                    {(value) => (
-                        <div>
+            <FilmConsumer>
+                {(value) => (
+                    <div className="film container">
+                        <div className={`movie_card ${(value.favoritesFilms[episode_id - 1]) ? "selected" : ""}`} style={{ background: `url(${srcImg})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                             <div className="info_section">
                                 <div className="movie_header">
-                                    <h4>{title}</h4>
-                                    <p>{release_date}</p>
-                                    <p>Episode Number: {episode_id}</p>
+                                    <h1>{title}</h1>
+                                    <h4>{release_date}</h4>
+                                    <h4>Episode Number {episode_id}</h4>
                                 </div>
                                 <div className="movie_desc">
-                                    <p className="text">{opening_crawl}</p>
+                                    <p className="text" data-toggle="tooltip" title={opening_crawl}>
+                                        {opening_crawl}
+                                    </p>
                                 </div>
                                 <div className="movie_social">
                                     <ul>
-                                        <li>
-                                            <div>
-                                                {value.favoritesFilms[episode_id-1] ?
-                                                    <i className="fas fa-heart" onClick={() => { value.toggleFavorite(episode_id) }}></i>
-                                                    : <i className="far fa-heart" onClick={() => { value.toggleFavorite(episode_id) }}></i>}
-                                            </div>
-                                        </li>
+                                        {value.favoritesFilms[episode_id - 1] ?
+                                            <i className="fas fa-heart" onClick={() => { value.toggleFavorite(episode_id) }}></i>
+                                            : <i className="far fa-heart" onClick={() => { value.toggleFavorite(episode_id) }}></i>}
                                     </ul>
                                 </div>
                             </div>
-                            <div className="blur_back"></div>
+                            <div className="blur_back ave_back"></div>
                         </div>
-                    )}
-                </FilmConsumer>
-            </div>
+                    </div>
+                )}
+            </FilmConsumer>
 
         )
     }

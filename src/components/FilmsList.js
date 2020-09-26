@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FilmConsumer , FilmContext } from '../context';
+import { FilmConsumer } from '../context';
 import Film from './Film';
 
 export default class FilmsList extends Component {
@@ -9,8 +9,8 @@ export default class FilmsList extends Component {
         return (
             <React.Fragment>
                 <div className="py-5">
-                    <div className="container text-center text title">
-                        <h1>Films list</h1>
+                    <div className="container films-list">
+                        <h1 className="main-title">Films list</h1>
                         <div className="row">
                             <FilmConsumer>
                                 {(value) => (

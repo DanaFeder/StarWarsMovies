@@ -1,10 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FilmsList from './components/FilmsList';
-import FavoritesFilms from './components/FavoritesFilms';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import Cookies from "js-cookie";
 import { FilmContext } from './context'
@@ -47,7 +45,6 @@ function App() {
       <NavBar />
       <Switch>
         <Router path="/" component={FilmsList} />
-        <Router path="/favorites" component={FavoritesFilms} />
       </Switch>
       <FilmsList />
     </React.Fragment>
